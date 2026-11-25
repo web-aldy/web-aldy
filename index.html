@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b10">
+  <meta name="description" content="TGC CRYPTO — Digital Asset Market Platform powered by TGC GROUP.">
+  <title>TGC CRYPTO — Digital Asset Platform</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-icon">T</div>
+      <div><h2>TGC <span>CRYPTO</span></h2><small>DIGITAL ASSET PLATFORM</small></div>
+      <button class="close-sidebar" id="closeSidebar" aria-label="Close menu">×</button>
+    </div>
+    <div class="nav-label">MENU UTAMA</div>
+    <nav class="navigation">
+      <button class="nav-item active" data-page="dashboard"><span>◫</span> Dashboard</button>
+      <button class="nav-item" data-page="market"><span>⌁</span> Market</button>
+      <button class="nav-item" data-page="watchlist"><span>☆</span> Watchlist</button>
+      <button class="nav-item" data-page="portfolio"><span>▣</span> Portfolio</button>
+    </nav>
+    <div class="nav-label">PREFERENSI</div>
+    <nav class="navigation">
+      <button class="nav-item" data-page="settings"><span>⚙</span> Settings</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="sidebar-status"><span class="status-dot"></span><div><strong>Market Connection</strong><small id="connectionText">Connecting...</small></div></div>
+      <div class="sidebar-brand"><strong>TGC GROUP</strong><small>Think Beyond. Build the Future.</small></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="top-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+        <div><div class="breadcrumb">TGC CRYPTO / <span id="breadcrumb">Dashboard</span></div><h1 id="pageTitle">Dashboard</h1></div>
+      </div>
+      <div class="top-actions">
+        <div class="live-indicator"><span class="status-dot"></span> LIVE DATA</div>
+        <select id="currencySelect" class="currency-select" aria-label="Currency">
+          <option value="idr">IDR</option><option value="usd">USD</option>
+        </select>
+        <button class="icon-btn" id="refreshBtn" title="Refresh market" aria-label="Refresh market">↻</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="page active" id="dashboardPage">
+        <div class="welcome">
+          <div><p class="eyebrow">MARKET OVERVIEW</p><h2>Explore the Digital Asset Market.</h2><p>Monitor cryptocurrency prices and manage your digital asset portfolio.</p></div>
+          <div class="welcome-mark">TGC<span>.</span></div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-top"><span>Total Market Cap</span><span class="stat-icon">◈</span></div><h2 id="totalMarketCap">Loading...</h2><small id="marketCapChange">Global cryptocurrency market</small></div>
+          <div class="stat-card"><div class="stat-top"><span>24H Trading Volume</span><span class="stat-icon">↗</span></div><h2 id="totalVolume">Loading...</h2><small>Global trading volume</small></div>
+          <div class="stat-card"><div class="stat-top"><span>Bitcoin Dominance</span><span class="stat-icon">₿</span></div><h2 id="btcDominance">Loading...</h2><small>BTC market share</small></div>
+          <div class="stat-card"><div class="stat-top"><span>Tracked Assets</span><span class="stat-icon">◇</span></div><h2 id="trackedAssets">0</h2><small>Assets in your portfolio</small></div>
+        </div>
+        <div class="section-heading"><div><h2>Top Cryptocurrency</h2><p>Popular digital assets by market capitalization</p></div><button class="text-button" data-goto="market">View all →</button></div>
+        <div class="table-card"><div class="table-scroll"><table><thead><tr><th>#</th><th>ASSET</th><th>PRICE</th><th>24H CHANGE</th><th>MARKET CAP</th><th></th></tr></thead><tbody id="dashboardCoins"><tr><td colspan="6" class="loading">Loading market data...</td></tr></tbody></table></div></div>
+        <div class="section-heading"><div><h2>Your Watchlist</h2><p>Cryptocurrency you are monitoring</p></div><button class="text-button" data-goto="watchlist">View all →</button></div>
+        <div class="watch-grid" id="dashboardWatchlist"><div class="empty-state">Your watchlist is empty.</div></div>
+      </section>
+
+      <section class="page" id="marketPage">
+        <div class="page-intro"><div><h2>Cryptocurrency Market</h2><p>Explore market information and cryptocurrency prices.</p></div></div>
+        <div class="market-toolbar"><div class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search cryptocurrency..."></div><button class="secondary-btn" id="clearSearch">Clear</button></div>
+        <div class="table-card"><div class="table-scroll"><table><thead><tr><th>#</th><th>ASSET</th><th>PRICE</th><th>1H CHANGE</th><th>24H CHANGE</th><th>7D TREND</th><th>VOLUME 24H</th><th>MARKET CAP</th><th></th></tr></thead><tbody id="marketCoins"><tr><td colspan="9" class="loading">Loading market data...</td></tr></tbody></table></div></div>
+        <p class="data-note" id="marketUpdated">Waiting for market data...</p>
+      </section>
+
+      <section class="page" id="watchlistPage">
+        <div class="page-intro"><div><h2>My Watchlist</h2><p>Keep track of your favorite cryptocurrencies.</p></div></div>
+        <div class="watch-grid" id="watchlistCoins"><div class="empty-state">Your watchlist is empty.</div></div>
+      </section>
+
+      <section class="page" id="portfolioPage">
+        <div class="page-intro portfolio-heading"><div><h2>My Portfolio</h2><p>Track and manage your recorded cryptocurrency holdings.</p></div><button class="primary-btn" id="addAssetBtn">+ Add Asset</button></div>
+        <div class="portfolio-summary">
+          <div class="stat-card"><span class="muted">Estimated Portfolio Value</span><h2 id="portfolioValue">Rp0</h2><small>Based on current market prices</small></div>
+          <div class="stat-card"><span class="muted">Number of Assets</span><h2 id="portfolioCount">0</h2><small>Recorded holdings</small></div>
+        </div>
+        <div class="section-heading"><div><h2>Asset Holdings</h2><p>Your recorded digital assets</p></div></div>
+        <div class="table-card"><div class="table-scroll"><table><thead><tr><th>ASSET</th><th>QUANTITY</th><th>PRICE</th><th>ESTIMATED VALUE</th><th>ACTION</th></tr></thead><tbody id="portfolioCoins"><tr><td colspan="5" class="empty-state">No assets recorded yet.</td></tr></tbody></table></div></div>
+      </section>
+
+      <section class="page" id="settingsPage">
+        <div class="page-intro"><div><h2>Settings</h2><p>Manage your TGC CRYPTO preferences.</p></div></div>
+        <div class="settings-card"><h3>General Preferences</h3>
+          <div class="setting-row"><div><strong>Currency Display</strong><p>Choose your preferred market currency.</p></div><select id="settingsCurrency" class="currency-select"><option value="idr">IDR</option><option value="usd">USD</option></select></div>
+          <div class="setting-row"><div><strong>Market Auto Refresh</strong><p>Automatically update market data every 60 seconds.</p></div><label class="switch"><input type="checkbox" id="autoRefresh" checked><span></span></label></div>
+        </div>
+        <div class="settings-card"><h3>About TGC CRYPTO</h3><div class="about-info"><div class="about-logo">TGC</div><div><strong>TGC CRYPTO</strong><p>Digital Asset Market Platform</p><small>Powered By TGC GROUP</small></div></div><p class="about-description">TGC CRYPTO is a cryptocurrency market monitoring and portfolio tracking platform. Market data is provided by CoinGecko.</p></div>
+        <div class="settings-card"><h3>Data Management</h3><div class="setting-row"><div><strong>Reset Local Data</strong><p>Remove saved watchlist and portfolio records from this browser.</p></div><button class="danger-btn" id="resetDataBtn">Reset Data</button></div></div>
+      </section>
+      <footer class="footer"><span>© 2026 TGC CRYPTO</span><span>Powered By TGC GROUP</span></footer>
+    </div>
+  </main>
+</div>
+
+<div class="modal" id="coinModal"><div class="modal-box"><button class="modal-close" data-close="coinModal" aria-label="Close">×</button><div id="coinDetailContent"></div></div></div>
+<div class="modal" id="assetModal"><div class="modal-box"><button class="modal-close" data-close="assetModal" aria-label="Close">×</button><h2>Add Portfolio Asset</h2><p class="modal-subtitle">Record your cryptocurrency holdings.</p>
+  <form id="assetForm"><label for="assetSelect">Cryptocurrency</label><select id="assetSelect" required><option value="">Select asset</option></select><label for="assetQuantity">Quantity</label><input type="number" id="assetQuantity" min="0.00000001" step="any" placeholder="Enter quantity" required><div class="form-actions"><button type="button" class="secondary-btn" data-close="assetModal">Cancel</button><button type="submit" class="primary-btn">Save Asset</button></div></form>
+</div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
